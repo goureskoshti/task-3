@@ -1,24 +1,18 @@
-// components/StatCard.tsx
-import { ArrowUpRight, ArrowDownRight } from 'lucide-react';
+import React from "react";
 
-interface StatCardProps {
-  title: string;
+type StatCardProps = {
+  label: string;
   value: string;
-  change: string;
-  isPositive?: boolean;
-}
+  color: string;
+};
 
-export default function StatCard({ title, value, change, isPositive = true }: StatCardProps) {
+const StatCard: React.FC<StatCardProps> = ({ label, value, color }) => {
   return (
-    <div className="bg-white rounded-lg border p-4 shadow-sm">
-      <p className="text-xs text-gray-500 mb-2">{title}</p>
-      <div className="flex items-center justify-between">
-        <p className="text-xl font-semibold">{value}</p>
-        <span className={`flex items-center text-sm ${isPositive ? 'text-green-600' : 'text-red-500'}`}>
-          {isPositive ? <ArrowUpRight className="w-4 h-4" /> : <ArrowDownRight className="w-4 h-4" />}
-          {change}
-        </span>
-      </div>
+    <div className="p-4 bg-white rounded-xl shadow-md space-y-2">
+      <div className={`text-sm font-medium ${color}`}>{label}</div>
+      <div className="text-2xl font-bold text-gray-900">{value}</div>
     </div>
   );
-}
+};
+
+export default StatCard;
