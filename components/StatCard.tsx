@@ -1,18 +1,16 @@
-import React from "react";
+// components/StatCard.tsx
 
-type StatCardProps = {
+interface StatCardProps {
   label: string;
   value: string;
-  color: string;
-};
+  color?: string;
+}
 
-const StatCard: React.FC<StatCardProps> = ({ label, value, color }) => {
+export default function StatCard({ label, value, color = 'text-indigo-600' }: StatCardProps) {
   return (
-    <div className="p-4 bg-white rounded-xl shadow-md space-y-2">
-      <div className={`text-sm font-medium ${color}`}>{label}</div>
-      <div className="text-2xl font-bold text-gray-900">{value}</div>
+    <div className="bg-white border rounded-lg shadow-sm p-6">
+      <p className="text-sm text-gray-500 font-medium">{label}</p>
+      <p className={`text-2xl font-bold mt-2 ${color}`}>{value}</p>
     </div>
   );
-};
-
-export default StatCard;
+}
